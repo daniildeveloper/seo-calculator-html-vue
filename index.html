@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags-->
+    <title> Главная
+    </title>
+    <!-- Bootstrap-->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries-->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file://-->
+    <!--if lt IE 9
+    script(src='https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js')
+    script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')
+    -->
+  </head>
+  <body>
+    <main class="content">
+      <h3>Тарифы на семантическое ядро</h3>
+      <div class="container content-container">
+        <p class="text">Сколько стоит собрать семантику? Ответ на этот вопрос волнует многих наших клиентов. Мы стремимся предоставить нашим заказчикам выбор, поэтому предлагаем оптимальные тарифы, разработанные с учётом специфики проектов и финансовых интересов каждого из Вас.</p>
+      </div>
+      <div class="tabs-wrapper container-fluid">
+        <div class="container tabs-content" id="calculator">
+          <div class="tab row">
+            <button class="tablinks col left" onclick="openCity(event, 'Left')">
+              <div class="price">от 5000 ₽</div>
+              <div class="row"><img class="img" src="img/algebra.png" alt="">
+                <div class="tablinks__header">
+                  <h4>Только семантическое ядро</h4>
+                  <p>Сбор семантического ядра на 500* ключевых фраз.</p>
+                </div>
+              </div>
+            </button>
+            <button class="tablinks col right active" onclick="openCity(event, 'Right')">
+              <div class="price">от 7000 ₽</div>
+              <div class="row"><img class="img" src="img/periskop.png" alt="">
+                <div class="tablinks__header">
+                  <h4>Семантическое ядро + внедрение</h4>
+                  <p>Цена формируется в зависимости от выбранных услуг</p>
+                </div>
+              </div>
+            </button>
+          </div>
+          <div class="tabcontent" id="Left">
+            <div class="tab-content">
+              <div class="container">
+                <p class="tab-content__header">Отдельные услуги</p>
+                <div class="tab-content__calculator">
+                  <div class="row">
+                    <div class="col">
+                      <div class="tab-content__calculator__header">Введите количество ключевых слов:</div>
+                      <div class="range">
+                        <label for="range"></label>
+                        <input type="number" v-bind:value="keywords" id="rangeValue">
+                        <input id="range" type="range" name="range" list="rangeSettings" min="1" max="10000" v-bind:value="keywords" v-model="keywords">
+                        <datalist id="rangeSettings">
+                          <option>0</option>
+                          <option>500</option>
+                          <option>1000</option>
+                          <option>1500</option>
+                          <option>2000</option>
+                          <option>2500</option>
+                          <option>3000</option>
+                          <option>3500</option>
+                          <option>4000</option>
+                          <option>4500</option>
+                          <option>5000</option>
+                          <option>5500</option>
+                          <option>6000</option>
+                          <option>6500</option>
+                          <option>7000</option>
+                          <option>7500</option>
+                          <option>8000</option>
+                          <option>8500</option>
+                          <option>9000</option>
+                          <option>9500</option>
+                        </datalist>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="row">
+                        <div class="col">
+                          <p class="total-price">{{simplePrice}}<span class="currency">₽</span></p>
+                          <button class="btn btn-primary" type="submit">Заказать сейчас</button>
+                        </div>
+                        <div class="col">
+                          <div class="tooltip">
+                            <div class="tooltip-content">*стоимость выполнения зависит от количества запросов, чем больше семантическое ядро, тем меньше стоимость за 1 ключ</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tabcontent" id="Right" style="display: block;">
+            <div class="tab-content">
+              <div class="container">
+                <p class="tab-content__header">Отдельные услуги</p>
+                <div class="tab-content__horizontal-guide">
+                  <div class="tab-content__horizontal-guide__service-chooser">
+                    <input type="checkbox" v-bind:checked="semanticCore" v-model="semanticCore" id="semantic-core">
+                    <label for="semantic-core">Сбор семантического ядра  -  <span class="price">12 000 рублей</span></label>
+                  </div>
+                  <div class="tab-content__horizontal-guide__service-chooser">
+                    <input type="checkbox" v-bind:checked="siteStructure" v-model="siteStructure" id="structure">
+                    <label for="structure">Подготовка структуры сайта  -  <span class="price">2 000 рублей</span></label>
+                  </div>
+                  <div class="tab-content__horizontal-guide__service-chooser">
+                    <input type="checkbox" id="tz">
+                    <label for="tz">Написание подробного ТЗ для копирайтера  -  <span class="price">Индивидуальный расчет</span></label><a class="info" href="#"><img src="img/info.svg" alt=""></a>
+                  </div>
+                  <div class="tab-content__horizontal-guide__service-chooser">
+                    <input type="checkbox" id="content-write">
+                    <label for="content-write">Написание контента и контроль копирайтера  -  <span class="price">Индивидуальный расчет</span></label><a class="info" href="#"><img src="img/info.svg" alt=""></a>
+                  </div>
+                </div>
+                <div class="tab-content__calculator">
+                  <div class="row">
+                    <div class="col">
+                      <div class="tab-content__calculator__header">Введите количество ключевых слов:</div>
+                      <div class="range">
+                        <label for="range"></label>
+                        <input type="number" max="10000" min="1" v-bind:value="keywords" v-model="keywords" id="rangeValue">
+                        <input id="range-left" type="range" name="range" list="rangeSettings-left" min="1" max="10001" step="100" v-bind:value="keywords" v-model="keywords">
+                        <datalist id="rangeSettings-left">
+                          <option>0</option>
+                          <option>500</option>
+                          <option>1000</option>
+                          <option>1500</option>
+                          <option>2000</option>
+                          <option>2500</option>
+                          <option>3000</option>
+                          <option>3500</option>
+                          <option>4000</option>
+                          <option>4500</option>
+                          <option>5000</option>
+                          <option>5500</option>
+                          <option>6000</option>
+                          <option>6500</option>
+                          <option>7000</option>
+                          <option>7500</option>
+                          <option>8000</option>
+                          <option>8500</option>
+                          <option>9000</option>
+                          <option>9500</option>
+                        </datalist>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="row">
+                        <div class="col">
+                          <p class="total-price">{{price}}<span class="currency">₽</span></p>
+                          <p class="description">+ расчет индивидуальных услуг</p>
+                          <button class="btn btn-primary" type="submit">Заказать сейчас</button>
+                        </div>
+                        <div class="col">
+                          <div class="tooltip">
+                            <div class="tooltip-content">*стоимость выполнения зависит от количества запросов, чем больше семантическое ядро, тем меньше стоимость за 1 ключ</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div><br><br><br><br><br><br><br><br><br><br>
+    </main>
+    <script src="js/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed-->
+    <script src="js/vue.js"></script>
+    <script src="js/jquery.pixlayout.0.9.8.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/vueapp.js"></script>
+  </body>
+</html>
